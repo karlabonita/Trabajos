@@ -33,10 +33,10 @@ public class Escenario extends Constantes{
         celdas[3][8].insertarPared();
         celdas[3][7].insertarPared();
     
-        celdas[4][3].insertarFinal();
+        celdas[9][9].insertarFinal();
         
        
-        jugador = new Jugador(this,1,2);
+        jugador = new Jugador(this,6,7);
         
     
     }
