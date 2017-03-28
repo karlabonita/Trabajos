@@ -23,6 +23,7 @@ public class Celda {
     
      
     public void insertarFinal(){
+       
         tipo = "[F]";
     }
      

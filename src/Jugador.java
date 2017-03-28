@@ -6,7 +6,7 @@
  */
 public class Jugador extends Constantes {
     public Escenario escenario;
-    public Celda jugador;
+    public Celda jugador; //Posicion
     
       public Jugador(Escenario escenario, int x, int y){
         this.escenario = escenario;
@@ -16,10 +16,20 @@ public class Jugador extends Constantes {
     }
 
    public boolean puedeMoverse(int x, int y){
-       if(escenario.celdas[x][y].tipo!="[#]"){
+       if(x<ANCHO && x>-1 && y<ALTO && y>-1 && escenario.celdas[x][y].tipo!="[#]"){
            return true;
            
        }    
+       return false;
+   }
+   
+   public boolean termino(int jx,int jy){
+      System.out.println("jx: "+jx+"\nyx:"+jy);
+       //System.out.println("Tipo de celda:"+escenario.celdas[jx][jy].toString());
+       if(jx<ANCHO && jx>-1 && jy<ALTO && jy>-1 && escenario.celdas[jx][jy].toString().equals("[F]")){
+           //System.out.println("fx: "+escenario.celdas[jx][jy].x+"\nfy: "+escenario.celdas[jx][jy].y);
+           return true;
+       }
        return false;
    }
    
@@ -31,11 +41,10 @@ public class Jugador extends Constantes {
             escenario.celdas[jugador.x-1][jugador.y].tipo="[ ]";
              
          }
-        
     }
     public void moverCeldaArriba(){
         
-          if(jugador.x>0 && puedeMoverse(jugador.x-1,jugador.y)){
+          if(jugador.x>-1 && puedeMoverse(jugador.x-1,jugador.y)){
               jugador.x--;
               escenario.celdas[jugador.x][jugador.y].tipo=jugador.tipo;
               escenario.celdas[jugador.x+1][jugador.y].tipo="[ ]";
@@ -43,7 +52,7 @@ public class Jugador extends Constantes {
     }
     
     public void moverCeldaIzquierda(){
-        if(jugador.y>0 && puedeMoverse(jugador.x,jugador.y-1)){
+        if(jugador.y>-1 && puedeMoverse(jugador.x,jugador.y-1)){
          jugador.y--;
          escenario.celdas[jugador.x][jugador.y].tipo=jugador.tipo;
          escenario.celdas[jugador.x][jugador.y+1].tipo="[ ]";
@@ -53,7 +62,7 @@ public class Jugador extends Constantes {
     
     
    public void moverCeldaDerecha(){
-       if(jugador.y< ANCHO -1 && puedeMoverse(jugador.x,jugador.y+1)){
+       if(jugador.y< ANCHO && puedeMoverse(jugador.x,jugador.y+1)){
         jugador.y++;
         escenario.celdas[jugador.x][jugador.y].tipo=jugador.tipo;
         escenario.celdas[jugador.x][jugador.y-1].tipo="[ ]";

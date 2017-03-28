@@ -35,6 +35,7 @@ public class Escenario extends Constantes{
     
         celdas[4][3].insertarFinal();
         
+       
         jugador = new Jugador(this,1,2);
         
     
